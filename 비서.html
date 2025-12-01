@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ko"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;My Persona: The Secretary&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Google Fonts --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Pretendard:wght@300;400;600&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--bg-color: #F4F4F0; /* 따뜻한 종이 색감 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--text-main: #0A0A0A; /* 잉크 블랙 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--accent-color: #2E28E7; /* Y2K Acid Blue */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--sub-color: #888;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--font-serif: 'Playfair Display', serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--font-mono: 'Courier Prime', monospace;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--font-sans: 'Pretendard', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>* { box-sizing: border-box; margin: 0; padding: 0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--bg-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-sans);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Layout: Editorial Grid --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 800px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-left: 1px solid var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-right: 1px solid var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 95vh;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Header: Magazine Style --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>header {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-top: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 3px double var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-serif);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: -1px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-style: italic;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.date-display {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-mono);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--accent-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- The Persona (Tiki-Taka Zone) --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.persona-box {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 5px 5px 0px var(--accent-color); /* Y2K drop shadow */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.persona-label {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: -10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-mono);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.7rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 2px 8px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.persona-message {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-serif);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.4;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cursor {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--accent-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: blink 1s step-end infinite;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vertical-align: middle;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes blink { 50% { opacity: 0; } }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Sections --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>section { margin-bottom: 20px; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>h2 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-mono);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- 1. Guard Mode (Focus) --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.focus-panel {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-main {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: transparent;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-serif);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-main:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-style: italic;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- 2. Growth (Goal) --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.progress-item {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.progress-label {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-serif);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.progress-bar-bg {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.progress-bar-fill {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--accent-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 0%; /* JS controlled */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: width 1s ease-in-out;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- 3. Aesthetic &amp; Dopamine --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.grid-gallery {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(3, 1fr);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.grid-item {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>aspect-ratio: 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px dashed var(--sub-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-mono);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.7rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--sub-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.grid-item:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--accent-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-style: solid;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Footer --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>footer {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-mono);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.7rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--sub-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-top: 1px solid var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- HEADER --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;The Archive&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="date-display" id="currentDate"&gt;Loading Date...&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- PERSONA INTERFACE --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="persona-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="persona-label"&gt;SYSTEM : SECRETARY&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="persona-message" id="aiMessage"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- JS로 텍스트 타이핑 효과 구현 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="cursor"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- SECTION 1: INTELLECT (FOCUS) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;01. Intellect &amp; Guard &lt;span&gt;[Ready]&lt;/span&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="focus-panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn-main" onclick="triggerFocus()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Deep Focus Mode&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span style="font-size:0.7rem; font-family: var(--font-mono);"&gt;업무 및 고시 공부&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn-main" onclick="triggerDopamineGuard()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Dopamine Detox&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span style="font-size:0.7rem; font-family: var(--font-mono);"&gt;긴급: 무기력 탈출&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- SECTION 2: GROWTH (GOALS) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;02. Growth Trajectory&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="progress-label"&gt;&lt;span&gt;면허 고시 (D-120)&lt;/span&gt; &lt;span&gt;34%&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="progress-bar-bg"&gt;&lt;div class="progress-bar-fill" style="width: 34%"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="progress-label"&gt;&lt;span&gt;이달의 프로젝트&lt;/span&gt; &lt;span&gt;78%&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="progress-bar-bg"&gt;&lt;div class="progress-bar-fill" style="width: 78%"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- SECTION 3: AESTHETIC (DIARY) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;03. Collection of Thoughts &lt;span style="font-size:0.7rem; cursor:pointer;" onclick="triggerDiary()"&gt;+ ADD&lt;/span&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid-gallery"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid-item"&gt;Empty&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid-item" style="background-color: #eee; border-style: solid; color:#000;"&gt;Inspiration&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid-item"&gt;Empty&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>DESIGNED FOR INFJ USER&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>NO FLUFF, JUST ESSENCE.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 1. 날짜 설정</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const now = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('currentDate').innerText = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 2. 페르소나 (티키타카 메시지 로직)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const messages = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"어서 오세요. 당신의 침묵이 꽤 길었군요.",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"오늘은 세상의 소음은 끄고, 당신의 내면에만 집중해 볼까요?",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"커피는 드셨습니까? 당신의 뇌가 카페인을 요구하는 수치가 감지됩니다.",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"방금 그 표정, 약간 무기력해 보입니다. 도파민 디톡스가 필요합니까?",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"아름다운 것을 수집할 시간입니다. 오늘 당신을 스친 영감은 무엇인가요?"</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 랜덤 메시지 선택 (실제로는 상황에 따라 분기 처리)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const selectedMessage = messages[Math.floor(Math.random() * messages.length)];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const messageElement = document.getElementById('aiMessage');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let index = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function typeWriter() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (index &lt; selectedMessage.length) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>messageElement.innerHTML += selectedMessage.charAt(index);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>index++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(typeWriter, 50); // 타이핑 속도</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 페이지 로드 시 타이핑 시작</p>
+<p class="p1"><span class="Apple-converted-space">        </span>window.onload = typeWriter;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 3. 버튼 인터랙션 (티키타카 예시)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function triggerFocus() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert("[비서] 알겠습니다. 지금부터 '가드 모드'를 가동합니다.\n다른 앱 알림은 모두 차단하시는 게 좋겠습니다. 제가 지켜보고 있겠습니다.");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function triggerDopamineGuard() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const answers = ["청소하기", "산책하기", "책 3페이지 읽기"];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const choice = answers[Math.floor(Math.random() * answers.length)];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert(`[비서] 늪에 빠지셨군요. 손을 잡아드리죠.\n지금 당장 [${choice}] 미션을 수행하세요. 생각할 시간은 없습니다.`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function triggerDiary() {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>alert("[비서] 오늘의 감정을 어떤 단어로 박제하시겠습니까?");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
