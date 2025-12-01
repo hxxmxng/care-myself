@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Persona: The Secretary</title>
+    <title>Huiming : Private</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Pretendard:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #F4F4F0; /* 따뜻한 종이 색감 */
-            --text-main: #0A0A0A; /* 잉크 블랙 */
-            --accent-color: #2E28E7; /* Y2K Acid Blue */
-            --sub-color: #888;
+            --bg-color: #F4F4F0;
+            --text-main: #111111;
+            --accent-color: #3B4CCA; /* 조금 더 차분해진 Deep Blue */
+            --danger-color: #D93025;
             --font-serif: 'Playfair Display', serif;
-            --font-mono: 'Courier Prime', monospace;
-            --font-sans: 'Pretendard', sans-serif;
+            --font-sans: 'DM Sans', sans-serif; /* 깔끔하고 세련된 산세리프 */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,288 +25,441 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: var(--font-sans);
-            line-height: 1.6;
-            overflow-x: hidden;
-            padding: 20px;
+            font-weight: 400;
+            line-height: 1.5;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        /* --- Layout: Editorial Grid --- */
+        /* --- SOS Mode Styles --- */
+        body.sos-active {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        body.sos-active .container {
+            border-color: #333;
+        }
+        body.sos-active button, 
+        body.sos-active input {
+            border-color: #555;
+            color: #fff;
+        }
+        body.sos-active .persona-box {
+            background: #111;
+            color: #fff;
+            border-color: #333;
+            box-shadow: none;
+        }
+
+        /* --- Layout --- */
         .container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            border-left: 1px solid var(--text-main);
-            border-right: 1px solid var(--text-main);
-            padding: 0 20px;
-            min-height: 95vh;
-            position: relative;
+            padding: 40px 20px;
+            min-height: 100vh;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            border-right: 1px solid rgba(0,0,0,0.1);
         }
 
-        /* --- Header: Magazine Style --- */
+        /* --- Header --- */
         header {
-            text-align: center;
-            padding-top: 40px;
-            border-bottom: 3px double var(--text-main);
-            padding-bottom: 20px;
+            margin-bottom: 50px;
+            text-align: left;
         }
 
         h1 {
             font-family: var(--font-serif);
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 600;
-            letter-spacing: -1px;
-            font-style: italic;
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
         }
-
-        .date-display {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
+        
+        .header-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
             color: var(--accent-color);
-            margin-top: 5px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
+            border-bottom: 2px solid var(--text-main);
+            padding-bottom: 10px;
         }
 
-        /* --- The Persona (Tiki-Taka Zone) --- */
+        /* --- Luocha (Persona) --- */
+        .persona-section {
+            margin-bottom: 40px;
+        }
         .persona-box {
             background: #fff;
             border: 1px solid var(--text-main);
-            padding: 20px;
-            box-shadow: 5px 5px 0px var(--accent-color); /* Y2K drop shadow */
+            padding: 25px;
             position: relative;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.05); /* 부드러운 그림자 */
+            transition: all 0.3s ease;
         }
-
-        .persona-label {
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            background: var(--text-main);
-            color: #fff;
-            font-family: var(--font-mono);
+        .persona-name {
             font-size: 0.7rem;
-            padding: 2px 8px;
-        }
-
-        .persona-message {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            line-height: 1.4;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 1.2rem;
-            background-color: var(--accent-color);
-            animation: blink 1s step-end infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes blink { 50% { opacity: 0; } }
-
-        /* --- Sections --- */
-        section { margin-bottom: 20px; }
-        
-        h2 {
-            font-family: var(--font-mono);
-            font-size: 1rem;
+            font-weight: 700;
             text-transform: uppercase;
-            border-bottom: 1px solid var(--text-main);
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--accent-color);
         }
-
-        /* --- 1. Guard Mode (Focus) --- */
-        .focus-panel {
-            display: flex;
-            gap: 10px;
-            justify-content: space-between;
-        }
-        
-        .btn-main {
-            flex: 1;
-            background: transparent;
-            border: 1px solid var(--text-main);
+        .persona-text {
             font-family: var(--font-serif);
             font-size: 1.1rem;
-            padding: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .btn-main:hover {
-            background: var(--text-main);
-            color: #fff;
             font-style: italic;
         }
 
-        /* --- 2. Growth (Goal) --- */
-        .progress-item {
+        /* --- Dashboard Modules --- */
+        .module {
+            margin-bottom: 35px;
+        }
+        
+        h2 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 15px;
-        }
-        .progress-label {
-            font-family: var(--font-serif);
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-        .progress-bar-bg {
-            width: 100%;
-            height: 10px;
-            background: #ddd;
-            border: 1px solid var(--text-main);
-        }
-        .progress-bar-fill {
-            height: 100%;
-            background: var(--accent-color);
-            width: 0%; /* JS controlled */
-            transition: width 1s ease-in-out;
-        }
-
-        /* --- 3. Aesthetic & Dopamine --- */
-        .grid-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
-        }
-        .grid-item {
-            aspect-ratio: 1;
-            border: 1px dashed var(--sub-color);
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--sub-color);
-            cursor: pointer;
-        }
-        .grid-item:hover {
-            background: var(--accent-color);
-            color: #fff;
-            border-style: solid;
+            gap: 10px;
         }
 
-        /* --- Footer --- */
-        footer {
+        /* 1. D-Day & Focus */
+        .status-row {
+            display: flex;
+            gap: 20px;
+        }
+        .status-card {
+            flex: 1;
+            border: 1px solid var(--text-main);
+            padding: 15px;
             text-align: center;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            margin-top: 40px;
-            color: var(--sub-color);
-            border-top: 1px solid var(--text-main);
-            padding-top: 10px;
+        }
+        .d-day-number {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            display: block;
+            margin: 10px 0;
+        }
+        
+        /* 2. Habit & Mission */
+        .checklist {
+            list-style: none;
+        }
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .check-item input[type="checkbox"] {
+            margin-right: 15px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--text-main);
+        }
+        .check-item input[type="text"] {
+            border: none;
+            background: transparent;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+        }
+        .check-item.done input[type="text"] {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        /* 3. SOS Button */
+        .sos-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 1px solid var(--danger-color);
+            color: var(--danger-color);
+            font-family: var(--font-sans);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 50px;
+        }
+        .sos-btn:hover {
+            background: var(--danger-color);
+            color: #fff;
+        }
+
+        /* SOS Screen Content (Hidden by default) */
+        .sos-content {
+            display: none;
+            text-align: center;
+            padding: 50px 0;
+        }
+        body.sos-active .normal-content { display: none; }
+        body.sos-active .sos-content { display: block; }
+        
+        .breathe-text {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            animation: breathe 4s infinite ease-in-out;
+        }
+        @keyframes breathe {
+            0%, 100% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        /* Input styling for time */
+        .time-input {
+            border: none;
+            border-bottom: 1px solid var(--text-main);
+            background: transparent;
+            width: 60px;
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- HEADER -->
-        <header>
-            <h1>The Archive</h1>
-            <div class="date-display" id="currentDate">Loading Date...</div>
-        </header>
+        
+        <!-- NORMAL MODE CONTENT -->
+        <div class="normal-content">
+            <header>
+                <h1>HUIMING : PRIVATE</h1>
+                <div class="header-meta">
+                    <span id="dateDisplay"></span>
+                    <span id="streakDisplay">STREAK: 0 DAYS</span>
+                </div>
+            </header>
 
-        <!-- PERSONA INTERFACE -->
-        <section>
-            <div class="persona-box">
-                <span class="persona-label">SYSTEM : SECRETARY</span>
-                <p class="persona-message" id="aiMessage">
-                    <!-- JS로 텍스트 타이핑 효과 구현 -->
-                </p>
-                <span class="cursor"></span>
-            </div>
-        </section>
+            <!-- LUOCHA MESSAGE -->
+            <section class="persona-section">
+                <div class="persona-box">
+                    <span class="persona-name">Luocha</span>
+                    <p class="persona-text" id="luochaMsg">...</p>
+                </div>
+            </section>
 
-        <!-- SECTION 1: INTELLECT (FOCUS) -->
-        <section>
-            <h2>01. Intellect & Guard <span>[Ready]</span></h2>
-            <div class="focus-panel">
-                <button class="btn-main" onclick="triggerFocus()">
-                    Deep Focus Mode<br>
-                    <span style="font-size:0.7rem; font-family: var(--font-mono);">업무 및 고시 공부</span>
-                </button>
-                <button class="btn-main" onclick="triggerDopamineGuard()">
-                    Dopamine Detox<br>
-                    <span style="font-size:0.7rem; font-family: var(--font-mono);">긴급: 무기력 탈출</span>
-                </button>
-            </div>
-        </section>
+            <!-- DASHBOARD -->
+            <section class="module">
+                <h2>Overview</h2>
+                <div class="status-row">
+                    <div class="status-card">
+                        <span>LICENSURE EXAM</span>
+                        <!-- D-Day 클릭 시 날짜 수정 가능 (prompt) -->
+                        <span class="d-day-number" id="dDayCount" onclick="setTargetDate()" style="cursor:pointer">D-?</span>
+                        <span style="font-size:0.7rem; color:#888;">(Click to Edit)</span>
+                    </div>
+                    <div class="status-card">
+                        <span>STUDY LOG</span>
+                        <div style="margin: 10px 0;">
+                            <input type="text" class="time-input" placeholder="0" id="studyHours"> hrs
+                        </div>
+                        <button onclick="logStudy()" style="background:none; border:1px solid #ccc; padding:5px 10px; cursor:pointer; font-size:0.8rem;">기록</button>
+                    </div>
+                </div>
+            </section>
 
-        <!-- SECTION 2: GROWTH (GOALS) -->
-        <section>
-            <h2>02. Growth Trajectory</h2>
-            <div class="progress-item">
-                <div class="progress-label"><span>면허 고시 (D-120)</span> <span>34%</span></div>
-                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 34%"></div></div>
-            </div>
-            <div class="progress-item">
-                <div class="progress-label"><span>이달의 프로젝트</span> <span>78%</span></div>
-                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 78%"></div></div>
-            </div>
-        </section>
+            <section class="module">
+                <h2>Daily Missions <button onclick="resetMissions()" style="font-size:0.7rem; margin-left:auto; border:none; background:none; cursor:pointer;">[RESET]</button></h2>
+                <ul class="checklist">
+                    <li class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><input type="text" value="영양제 챙겨 먹기"></li>
+                    <li class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><input type="text" value="면허 고시 1단원 복습"></li>
+                    <li class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><input type="text" value="방 환기 10분"></li>
+                    <li class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><input type="text" value="3줄 일기 쓰기"></li>
+                </ul>
+            </section>
 
-        <!-- SECTION 3: AESTHETIC (DIARY) -->
-        <section>
-            <h2>03. Collection of Thoughts <span style="font-size:0.7rem; cursor:pointer;" onclick="triggerDiary()">+ ADD</span></h2>
-            <div class="grid-gallery">
-                <div class="grid-item">Empty</div>
-                <div class="grid-item" style="background-color: #eee; border-style: solid; color:#000;">Inspiration</div>
-                <div class="grid-item">Empty</div>
-            </div>
-        </section>
+            <section class="module">
+                <h2>Habit Tracker</h2>
+                <ul class="checklist" id="habitList">
+                    <li class="check-item"><input type="checkbox"><input type="text" value="물 1L 마시기"></li>
+                    <li class="check-item"><input type="checkbox"><input type="text" value="독서 30분"></li>
+                </ul>
+                <div style="text-align:right; font-size:0.8rem; margin-top:5px; cursor:pointer;" onclick="addHabit()">+ Add Habit</div>
+            </section>
 
-        <footer>
-            DESIGNED FOR INFJ USER<br>
-            NO FLUFF, JUST ESSENCE.
-        </footer>
+            <button class="sos-btn" onclick="toggleSOS(true)">⚠ S.O.S (EMERGENCY)</button>
+        </div>
+
+        <!-- SOS MODE CONTENT -->
+        <div class="sos-content">
+            <h1 style="font-family: var(--font-serif); margin-bottom:20px;">Deep Breath</h1>
+            <p class="persona-text" style="margin-bottom: 50px;">
+                "괜찮습니다, Huiming. <br>모든 불을 껐으니, 이제 당신의 호흡 소리만 들으세요.<br>제가 곁에 있습니다."
+            </p>
+            
+            <div class="breathe-text">Inhale... Exhale...</div>
+
+            <div style="text-align: left; max-width: 300px; margin: 0 auto;">
+                <p style="margin-bottom:10px; font-size:0.8rem; color:#888;">지금 할 수 있는 아주 작은 일:</p>
+                <ul class="checklist">
+                    <li class="check-item"><input type="checkbox"><span style="margin-left:10px;">물 한 잔 마시기</span></li>
+                    <li class="check-item"><input type="checkbox"><span style="margin-left:10px;">눈 감고 10초 세기</span></li>
+                    <li class="check-item"><input type="checkbox"><span style="margin-left:10px;">어깨 힘 빼기</span></li>
+                </ul>
+            </div>
+
+            <button class="sos-btn" onclick="toggleSOS(false)" style="border-color:#fff; color:#fff; margin-top:50px;">I'm Okay Now (Exit)</button>
+        </div>
+
     </div>
 
     <script>
-        // 1. 날짜 설정
+        /* --- 1. Basic Setup & Data --- */
+        const userName = "Huiming";
+        const dateDisplay = document.getElementById('dateDisplay');
+        const streakDisplay = document.getElementById('streakDisplay');
+        const luochaMsg = document.getElementById('luochaMsg');
+        const dDayCount = document.getElementById('dDayCount');
+
         const now = new Date();
-        document.getElementById('currentDate').innerText = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        dateDisplay.innerText = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
 
-        // 2. 페르소나 (티키타카 메시지 로직)
-        const messages = [
-            "어서 오세요. 당신의 침묵이 꽤 길었군요.",
-            "오늘은 세상의 소음은 끄고, 당신의 내면에만 집중해 볼까요?",
-            "커피는 드셨습니까? 당신의 뇌가 카페인을 요구하는 수치가 감지됩니다.",
-            "방금 그 표정, 약간 무기력해 보입니다. 도파민 디톡스가 필요합니까?",
-            "아름다운 것을 수집할 시간입니다. 오늘 당신을 스친 영감은 무엇인가요?"
-        ];
+        /* --- 2. Logic: Streak & Learning Simulation --- */
+        function checkStreak() {
+            const lastVisit = localStorage.getItem('lastVisit');
+            let streak = parseInt(localStorage.getItem('streak') || 0);
+            const today = now.toDateString();
 
-        // 랜덤 메시지 선택 (실제로는 상황에 따라 분기 처리)
-        const selectedMessage = messages[Math.floor(Math.random() * messages.length)];
-        const messageElement = document.getElementById('aiMessage');
-        let index = 0;
+            if (lastVisit === today) {
+                // Same day, do nothing
+            } else if (lastVisit === new Date(now.setDate(now.getDate() - 1)).toDateString()) {
+                // Visited yesterday
+                streak++;
+            } else {
+                // Streak broken (or first visit)
+                if (streak > 0) {
+                    // Broken streak message logic handled in getMessage
+                    localStorage.setItem('streakBroken', 'true');
+                }
+                streak = 1; // Reset or start
+            }
+            
+            localStorage.setItem('lastVisit', new Date().toDateString());
+            localStorage.setItem('streak', streak);
+            streakDisplay.innerText = `STREAK: ${streak} DAYS`;
+            
+            return streak;
+        }
 
-        function typeWriter() {
-            if (index < selectedMessage.length) {
-                messageElement.innerHTML += selectedMessage.charAt(index);
-                index++;
-                setTimeout(typeWriter, 50); // 타이핑 속도
+        /* --- 3. Logic: Luocha's Voice (Random + Context) --- */
+        function getLuochaMessage() {
+            const hour = new Date().getHours();
+            const streak = checkStreak();
+            const isBroken = localStorage.getItem('streakBroken');
+            
+            let msgs = [];
+
+            if (isBroken === 'true') {
+                msgs = [
+                    "어제는 푹 쉬셨습니까? 괜찮습니다. 호흡을 가다듬고 다시 시작하죠.",
+                    "당신의 공백도 삶의 일부입니다. 저는 자리를 지키고 있었습니다."
+                ];
+                localStorage.removeItem('streakBroken'); // Reset flag
+            } else if (hour < 6) {
+                msgs = ["이 시간까지 깨어 계시는군요. 세상이 조용하니 집중하기엔 좋습니다만, 건강이 염려됩니다."];
+            } else if (hour < 12) {
+                msgs = [
+                    `${userName}, 좋은 아침입니다. 당신의 컨디션을 체크해 주시겠습니까?`,
+                    "오늘의 시작이군요. 무리하지 말고, 우아하게 처리해 봅시다."
+                ];
+            } else if (hour > 22) {
+                msgs = [
+                    "하루를 정리할 시간입니다. 오늘 당신은 충분히 애썼습니다.",
+                    "도파민의 늪에 빠지지 않도록 주의하세요. 이제 정적인 휴식이 필요합니다."
+                ];
+            } else {
+                msgs = [
+                    `${userName}, 당신의 지성을 믿습니다.`,
+                    "잠시 창밖을 보셨나요? 가끔은 멍하니 있는 것도 전략입니다.",
+                    "지금 하시는 그 고민, 어쩌면 답은 아주 단순할지도 모릅니다.",
+                    "저는 당신의 속도를 존중합니다. 서두르지 마세요."
+                ];
+            }
+            
+            // Random pick
+            return msgs[Math.floor(Math.random() * msgs.length)];
+        }
+
+        luochaMsg.innerText = getLuochaMessage();
+
+        /* --- 4. Logic: D-Day --- */
+        function updateDday() {
+            const target = localStorage.getItem('targetDate');
+            if (target) {
+                const targetDate = new Date(target);
+                const diff = targetDate - new Date();
+                const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                dDayCount.innerText = days > 0 ? `D-${days}` : (days === 0 ? "D-DAY" : `D+${Math.abs(days)}`);
+            } else {
+                dDayCount.innerText = "Set Date";
             }
         }
-        // 페이지 로드 시 타이핑 시작
-        window.onload = typeWriter;
 
-        // 3. 버튼 인터랙션 (티키타카 예시)
-        function triggerFocus() {
-            alert("[비서] 알겠습니다. 지금부터 '가드 모드'를 가동합니다.\n다른 앱 알림은 모두 차단하시는 게 좋겠습니다. 제가 지켜보고 있겠습니다.");
+        function setTargetDate() {
+            const date = prompt("목표 날짜를 입력해주세요 (예: 2025-10-25)");
+            if (date) {
+                localStorage.setItem('targetDate', date);
+                updateDday();
+                alert("[Luocha] 목표가 설정되었습니다. 그날까지 제가 동행하겠습니다.");
+            }
+        }
+        updateDday();
+
+        /* --- 5. Logic: Study Log --- */
+        function logStudy() {
+            const hours = document.getElementById('studyHours').value;
+            if(hours) {
+                if(hours > 8) alert("[Luocha] 대단한 집중력입니다. 하지만 번아웃이 오지 않게 주의하세요.");
+                else if(hours > 0) alert("[Luocha] 수고하셨습니다. 오늘의 성장이 기록되었습니다.");
+                else alert("[Luocha] 시작이 반입니다.");
+            }
         }
 
-        function triggerDopamineGuard() {
-            const answers = ["청소하기", "산책하기", "책 3페이지 읽기"];
-            const choice = answers[Math.floor(Math.random() * answers.length)];
-            alert(`[비서] 늪에 빠지셨군요. 손을 잡아드리죠.\n지금 당장 [${choice}] 미션을 수행하세요. 생각할 시간은 없습니다.`);
+        /* --- 6. UI Interactions --- */
+        function toggleCheck(el) {
+            const li = el.parentElement;
+            if (el.checked) li.classList.add('done');
+            else li.classList.remove('done');
         }
-        
-        function triggerDiary() {
-             alert("[비서] 오늘의 감정을 어떤 단어로 박제하시겠습니까?");
+
+        function resetMissions() {
+            document.querySelectorAll('.checklist input[type="checkbox"]').forEach(el => {
+                el.checked = false;
+                el.parentElement.classList.remove('done');
+            });
+            alert("[Luocha] 미션 보드를 깨끗이 닦아두었습니다.");
+        }
+
+        function addHabit() {
+            const habit = prompt("새로운 습관을 입력하세요:");
+            if (habit) {
+                const ul = document.getElementById('habitList');
+                const li = document.createElement('li');
+                li.className = 'check-item';
+                li.innerHTML = `<input type="checkbox"><input type="text" value="${habit}">`;
+                ul.appendChild(li);
+            }
+        }
+
+        function toggleSOS(active) {
+            if (active) {
+                document.body.classList.add('sos-active');
+            } else {
+                document.body.classList.remove('sos-active');
+                alert("[Luocha] 돌아오신 걸 환영합니다.");
+            }
         }
     </script>
 </body>
