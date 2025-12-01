@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Persona: The Secretary</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Pretendard:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #F4F4F0; /* 따뜻한 종이 색감 */
+            --text-main: #0A0A0A; /* 잉크 블랙 */
+            --accent-color: #2E28E7; /* Y2K Acid Blue */
+            --sub-color: #888;
+            --font-serif: 'Playfair Display', serif;
+            --font-mono: 'Courier Prime', monospace;
+            --font-sans: 'Pretendard', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* --- Layout: Editorial Grid --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            border-left: 1px solid var(--text-main);
+            border-right: 1px solid var(--text-main);
+            padding: 0 20px;
+            min-height: 95vh;
+            position: relative;
+        }
+
+        /* --- Header: Magazine Style --- */
+        header {
+            text-align: center;
+            padding-top: 40px;
+            border-bottom: 3px double var(--text-main);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: -1px;
+            font-style: italic;
+        }
+
+        .date-display {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        /* --- The Persona (Tiki-Taka Zone) --- */
+        .persona-box {
+            background: #fff;
+            border: 1px solid var(--text-main);
+            padding: 20px;
+            box-shadow: 5px 5px 0px var(--accent-color); /* Y2K drop shadow */
+            position: relative;
+        }
+
+        .persona-label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: var(--text-main);
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 2px 8px;
+        }
+
+        .persona-message {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2rem;
+            background-color: var(--accent-color);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* --- Sections --- */
+        section { margin-bottom: 20px; }
+        
+        h2 {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--text-main);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* --- 1. Guard Mode (Focus) --- */
+        .focus-panel {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        
+        .btn-main {
+            flex: 1;
+            background: transparent;
+            border: 1px solid var(--text-main);
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-main:hover {
+            background: var(--text-main);
+            color: #fff;
+            font-style: italic;
+        }
+
+        /* --- 2. Growth (Goal) --- */
+        .progress-item {
+            margin-bottom: 15px;
+        }
+        .progress-label {
+            font-family: var(--font-serif);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: #ddd;
+            border: 1px solid var(--text-main);
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%; /* JS controlled */
+            transition: width 1s ease-in-out;
+        }
+
+        /* --- 3. Aesthetic & Dopamine --- */
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+        .grid-item {
+            aspect-ratio: 1;
+            border: 1px dashed var(--sub-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--sub-color);
+            cursor: pointer;
+        }
+        .grid-item:hover {
+            background: var(--accent-color);
+            color: #fff;
+            border-style: solid;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            margin-top: 40px;
+            color: var(--sub-color);
+            border-top: 1px solid var(--text-main);
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>The Archive</h1>
+            <div class="date-display" id="currentDate">Loading Date...</div>
+        </header>
+
+        <!-- PERSONA INTERFACE -->
+        <section>
+            <div class="persona-box">
+                <span class="persona-label">SYSTEM : SECRETARY</span>
+                <p class="persona-message" id="aiMessage">
+                    <!-- JS로 텍스트 타이핑 효과 구현 -->
+                </p>
+                <span class="cursor"></span>
+            </div>
+        </section>
+
+        <!-- SECTION 1: INTELLECT (FOCUS) -->
+        <section>
+            <h2>01. Intellect & Guard <span>[Ready]</span></h2>
+            <div class="focus-panel">
+                <button class="btn-main" onclick="triggerFocus()">
+                    Deep Focus Mode<br>
+                    <span style="font-size:0.7rem; font-family: var(--font-mono);">업무 및 고시 공부</span>
+                </button>
+                <button class="btn-main" onclick="triggerDopamineGuard()">
+                    Dopamine Detox<br>
+                    <span style="font-size:0.7rem; font-family: var(--font-mono);">긴급: 무기력 탈출</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 2: GROWTH (GOALS) -->
+        <section>
+            <h2>02. Growth Trajectory</h2>
+            <div class="progress-item">
+                <div class="progress-label"><span>면허 고시 (D-120)</span> <span>34%</span></div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 34%"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-label"><span>이달의 프로젝트</span> <span>78%</span></div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 78%"></div></div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: AESTHETIC (DIARY) -->
+        <section>
+            <h2>03. Collection of Thoughts <span style="font-size:0.7rem; cursor:pointer;" onclick="triggerDiary()">+ ADD</span></h2>
+            <div class="grid-gallery">
+                <div class="grid-item">Empty</div>
+                <div class="grid-item" style="background-color: #eee; border-style: solid; color:#000;">Inspiration</div>
+                <div class="grid-item">Empty</div>
+            </div>
+        </section>
+
+        <footer>
+            DESIGNED FOR INFJ USER<br>
+            NO FLUFF, JUST ESSENCE.
+        </footer>
+    </div>
+
+    <script>
+        // 1. 날짜 설정
+        const now = new Date();
+        document.getElementById('currentDate').innerText = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        // 2. 페르소나 (티키타카 메시지 로직)
+        const messages = [
+            "어서 오세요. 당신의 침묵이 꽤 길었군요.",
+            "오늘은 세상의 소음은 끄고, 당신의 내면에만 집중해 볼까요?",
+            "커피는 드셨습니까? 당신의 뇌가 카페인을 요구하는 수치가 감지됩니다.",
+            "방금 그 표정, 약간 무기력해 보입니다. 도파민 디톡스가 필요합니까?",
+            "아름다운 것을 수집할 시간입니다. 오늘 당신을 스친 영감은 무엇인가요?"
+        ];
+
+        // 랜덤 메시지 선택 (실제로는 상황에 따라 분기 처리)
+        const selectedMessage = messages[Math.floor(Math.random() * messages.length)];
+        const messageElement = document.getElementById('aiMessage');
+        let index = 0;
+
+        function typeWriter() {
+            if (index < selectedMessage.length) {
+                messageElement.innerHTML += selectedMessage.charAt(index);
+                index++;
+                setTimeout(typeWriter, 50); // 타이핑 속도
+            }
+        }
+        // 페이지 로드 시 타이핑 시작
+        window.onload = typeWriter;
+
+        // 3. 버튼 인터랙션 (티키타카 예시)
+        function triggerFocus() {
+            alert("[비서] 알겠습니다. 지금부터 '가드 모드'를 가동합니다.\n다른 앱 알림은 모두 차단하시는 게 좋겠습니다. 제가 지켜보고 있겠습니다.");
+        }
+
+        function triggerDopamineGuard() {
+            const answers = ["청소하기", "산책하기", "책 3페이지 읽기"];
+            const choice = answers[Math.floor(Math.random() * answers.length)];
+            alert(`[비서] 늪에 빠지셨군요. 손을 잡아드리죠.\n지금 당장 [${choice}] 미션을 수행하세요. 생각할 시간은 없습니다.`);
+        }
+        
+        function triggerDiary() {
+             alert("[비서] 오늘의 감정을 어떤 단어로 박제하시겠습니까?");
+        }
+    </script>
+</body>
+</html>
